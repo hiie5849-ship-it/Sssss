@@ -1,0 +1,135 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered user account with authentication details and roles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "format": "email", "maxLength": 255 },
+        "role": { "type": "string", "enum": ["customer", "seller", "admin"] },
+        "name": { "type": "string", "maxLength": 100 },
+        "phone": { "type": "string", "maxLength": 20 },
+        "status": { "type": "string", "enum": ["active", "suspended"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "email", "role", "name", "status", "createdAt"]
+    },
+    "SellerProfile": {
+      "title": "SellerProfile",
+      "description": "Store profile, verification status, and financial statistics for an independent merchant",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "storeName": { "type": "string", "maxLength": 120 },
+        "storeSlug": { "type": "string", "maxLength": 120 },
+        "storeDescription": { "type": "string", "maxLength": 1000 },
+        "storeLogo": { "type": "string", "maxLength": 500 },
+        "storeBanner": { "type": "string", "maxLength": 500 },
+        "businessAddress": { "type": "string", "maxLength": 300 },
+        "gstin": { "type": "string", "maxLength": 30 },
+        "pan": { "type": "string", "maxLength": 20 },
+        "bankAccount": { "type": "string", "maxLength": 50 },
+        "ifsc": { "type": "string", "maxLength": 20 },
+        "approvalStatus": { "type": "string", "enum": ["pending", "approved", "rejected", "suspended"] },
+        "commissionRate": { "type": "number" },
+        "totalSales": { "type": "number" },
+        "totalEarnings": { "type": "number" },
+        "rating": { "type": "number" },
+        "numRatings": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "storeName", "approvalStatus", "commissionRate", "createdAt", "updatedAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Item listed for sale in the marketplace",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "sellerId": { "type": "string", "maxLength": 128 },
+        "storeName": { "type": "string", "maxLength": 120 },
+        "title": { "type": "string", "maxLength": 200 },
+        "slug": { "type": "string", "maxLength": 220 },
+        "description": { "type": "string", "maxLength": 4000 },
+        "categoryId": { "type": "string", "maxLength": 100 },
+        "categoryName": { "type": "string", "maxLength": 100 },
+        "price": { "type": "number" },
+        "salePrice": { "type": "number" },
+        "sku": { "type": "string", "maxLength": 80 },
+        "stock": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "inactive", "draft"] },
+        "rating": { "type": "number" },
+        "numReviews": { "type": "number" },
+        "isFeatured": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "sellerId", "title", "categoryId", "price", "salePrice", "sku", "stock", "status", "createdAt"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase transaction containing items from one or multiple sellers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "orderNumber": { "type": "string", "maxLength": 50 },
+        "customerId": { "type": "string", "maxLength": 128 },
+        "customerName": { "type": "string", "maxLength": 100 },
+        "customerEmail": { "type": "string", "maxLength": 255 },
+        "subtotal": { "type": "number" },
+        "shippingFee": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string", "enum": ["cod", "razorpay", "card", "upi"] },
+        "paymentStatus": { "type": "string", "enum": ["pending", "paid", "failed", "refunded"] },
+        "orderStatus": { "type": "string", "enum": ["placed", "confirmed", "processing", "shipped", "delivered", "cancelled", "returned"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "orderNumber", "customerId", "totalAmount", "paymentMethod", "paymentStatus", "orderStatus", "createdAt"]
+    },
+    "SubOrder": {
+      "title": "SubOrder",
+      "description": "Portion of a parent order assigned to a specific seller merchant",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "parentOrderId": { "type": "string", "maxLength": 128 },
+        "sellerId": { "type": "string", "maxLength": 128 },
+        "storeName": { "type": "string", "maxLength": 120 },
+        "subtotal": { "type": "number" },
+        "commissionAmount": { "type": "number" },
+        "sellerEarnings": { "type": "number" },
+        "status": { "type": "string", "enum": ["placed", "confirmed", "processing", "shipped", "delivered", "cancelled", "returned"] },
+        "trackingNumber": { "type": "string", "maxLength": 100 },
+        "carrier": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "parentOrderId", "sellerId", "subtotal", "commissionAmount", "sellerEarnings", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Private user account records"
+    },
+    "/sellerProfiles/{sellerId}": {
+      "schema": "SellerProfile",
+      "description": "Seller store profile and verification details"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Marketplace products catalog"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Master customer orders"
+    },
+    "/orders/{orderId}/subOrders/{subOrderId}": {
+      "schema": "SubOrder",
+      "description": "Seller-partitioned sub-orders"
+    }
+  }
+}

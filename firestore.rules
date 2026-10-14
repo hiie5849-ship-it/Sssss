@@ -1,0 +1,117 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function isApprovedSeller(sellerId) {
+      return isSignedIn() &&
+        exists(/databases/$(database)/documents/sellerProfiles/$(sellerId)) &&
+        get(/databases/$(database)/documents/sellerProfiles/$(sellerId)).data.approvalStatus == 'approved';
+    }
+
+    // Users Collection - PII Isolation
+    match /users/{userId} {
+      allow get: if isOwner(userId) || isAdmin();
+      allow list: if isAdmin();
+      allow create: if isSignedIn() && request.auth.uid == userId &&
+        request.resource.data.role in ['customer', 'seller'] &&
+        request.resource.data.status == 'active';
+      allow update: if isOwner(userId) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['role', 'status', 'email']);
+      allow delete: if isAdmin();
+    }
+
+    // Admins Collection
+    match /admins/{adminId} {
+      allow read: if isAdmin();
+      allow write: if false; // Provisioned via server-side process only
+    }
+
+    // Seller Profiles Collection
+    match /sellerProfiles/{sellerId} {
+      allow get: if true; // Public store details
+      allow list: if isAdmin();
+      allow create: if isOwner(sellerId) &&
+        request.resource.data.approvalStatus == 'pending' &&
+        request.resource.data.totalSales == 0;
+      allow update: if (isOwner(sellerId) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['approvalStatus', 'commissionRate', 'totalSales', 'totalEarnings'])) ||
+        isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Products Collection
+    match /products/{productId} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if isSignedIn() &&
+        isApprovedSeller(request.resource.data.sellerId) &&
+        request.resource.data.sellerId == request.auth.uid;
+      allow update: if isSignedIn() && (
+        (resource.data.sellerId == request.auth.uid &&
+         !request.resource.data.diff(resource.data).affectedKeys().hasAny(['sellerId', 'isFeatured'])) ||
+        isAdmin()
+      );
+      allow delete: if isSignedIn() && (resource.data.sellerId == request.auth.uid || isAdmin());
+    }
+
+    // Categories Collection
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Orders Collection
+    match /orders/{orderId} {
+      allow get: if isSignedIn() && (resource.data.customerId == request.auth.uid || isAdmin());
+      allow list: if isSignedIn() && (resource.data.customerId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.customerId == request.auth.uid;
+      allow update: if isAdmin(); // Order updates happen through verified server endpoints
+      allow delete: if false;
+
+      // Sub-Orders Subcollection (Multi-Seller Isolation)
+      match /subOrders/{subOrderId} {
+        allow get: if isSignedIn() && (
+          resource.data.sellerId == request.auth.uid ||
+          get(/databases/$(database)/documents/orders/$(orderId)).data.customerId == request.auth.uid ||
+          isAdmin()
+        );
+        allow list: if isSignedIn() && (
+          resource.data.sellerId == request.auth.uid ||
+          isAdmin()
+        );
+        allow update: if isSignedIn() && (
+          (resource.data.sellerId == request.auth.uid &&
+           request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'trackingNumber', 'carrier', 'updatedAt'])) ||
+          isAdmin()
+        );
+      }
+    }
+
+    // Audit Logs Collection
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow write: if false; // Server-only append
+    }
+  }
+}

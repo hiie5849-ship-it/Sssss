@@ -1,0 +1,8 @@
+{
+  "name": "ZappKart - Multi-Vendor Marketplace",
+  "description": "Production-ready multi-vendor e-commerce marketplace with customer shopping, seller store management, super admin control, order fulfillment, and secure payments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,420 @@
+{
+  "users": [
+    {
+      "id": "usr_admin_1",
+      "email": "admin@zappkart.com",
+      "passwordHash": "$2b$10$doXNuutgYfMR/UJOAUWQnu9qbhfxHy/awbBiHAbVUMSRttiwEbPKC",
+      "role": "admin",
+      "name": "Super Administrator",
+      "phone": "+91 98765 00000",
+      "status": "active",
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "usr_seller_tech",
+      "email": "nexus@techhub.in",
+      "passwordHash": "$2b$10$D.3GKy264mgpKI.DPYIUxeBfVA.r5uFuoaYvMKRZ1ovWro45L8jpS",
+      "role": "seller",
+      "name": "Nexus Electronics Store",
+      "phone": "+91 98765 11111",
+      "status": "active",
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "usr_seller_fashion",
+      "email": "care@urbanthreads.com",
+      "passwordHash": "$2b$10$D.3GKy264mgpKI.DPYIUxeBfVA.r5uFuoaYvMKRZ1ovWro45L8jpS",
+      "role": "seller",
+      "name": "Urban Threads Apparel",
+      "phone": "+91 98765 22222",
+      "status": "active",
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "usr_seller_pending",
+      "email": "organic@greenroots.in",
+      "passwordHash": "$2b$10$D.3GKy264mgpKI.DPYIUxeBfVA.r5uFuoaYvMKRZ1ovWro45L8jpS",
+      "role": "seller",
+      "name": "Green Roots Botanicals",
+      "phone": "+91 98765 33333",
+      "status": "active",
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "usr_customer_1",
+      "email": "customer@example.com",
+      "passwordHash": "$2b$10$PUb9MpEsG7qyOoYsT.IikuvdQKog7Yh.kCT4UIEl4zHHb1g5izRz2",
+      "role": "customer",
+      "name": "Rahul Sharma",
+      "phone": "+91 98765 44444",
+      "status": "active",
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    }
+  ],
+  "sellerProfiles": [
+    {
+      "userId": "usr_seller_tech",
+      "storeName": "Nexus Gadgets & Electronics",
+      "storeSlug": "nexus-electronics",
+      "storeDescription": "Authorized premium distributor of cutting-edge smartphones, audio gear, and ultra-high-speed compute accessories.",
+      "storeLogo": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=200&q=80",
+      "storeBanner": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+      "businessAddress": "Plot 42, Electronic City Phase 1, Bengaluru, KA 560100",
+      "gstin": "29ABCDE1234F1Z5",
+      "pan": "ABCDE1234F",
+      "bankAccount": "918273645012",
+      "ifsc": "HDFC0001234",
+      "approvalStatus": "approved",
+      "commissionRate": 8,
+      "totalSales": 142000,
+      "totalEarnings": 130640,
+      "rating": 4.8,
+      "numRatings": 64,
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "userId": "usr_seller_fashion",
+      "storeName": "Urban Threads Studio",
+      "storeSlug": "urban-threads",
+      "storeDescription": "Contemporary Indian streetwear, pure linen shirts, designer casuals, and sustainable everyday fashion essentials.",
+      "storeLogo": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=200&q=80",
+      "storeBanner": "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1200&q=80",
+      "businessAddress": "104 Fashion Street, Bandra West, Mumbai, MH 400050",
+      "gstin": "27FGHIJ5678K1Z2",
+      "pan": "FGHIJ5678K",
+      "bankAccount": "112233445566",
+      "ifsc": "ICIC0005678",
+      "approvalStatus": "approved",
+      "commissionRate": 12,
+      "totalSales": 89000,
+      "totalEarnings": 78320,
+      "rating": 4.7,
+      "numRatings": 42,
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "userId": "usr_seller_pending",
+      "storeName": "Green Roots Organics",
+      "storeSlug": "green-roots-organics",
+      "storeDescription": "Certified organic cold-pressed oils, ayurvedic teas, and natural wellness skincare.",
+      "storeLogo": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=200&q=80",
+      "businessAddress": "Sector 18, Noida, UP 201301",
+      "gstin": "09KLMNO9012P1Z8",
+      "approvalStatus": "pending",
+      "commissionRate": 10,
+      "totalSales": 0,
+      "totalEarnings": 0,
+      "rating": 5,
+      "numRatings": 0,
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_electronics",
+      "name": "Electronics",
+      "slug": "electronics",
+      "icon": "Smartphone",
+      "description": "Smartphones, Audio, Laptops, Wearables & Smart Home",
+      "image": "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=500&q=80",
+      "displayOrder": 1,
+      "isActive": true
+    },
+    {
+      "id": "cat_fashion",
+      "name": "Fashion",
+      "slug": "fashion",
+      "icon": "Shirt",
+      "description": "Men, Women, Footwear, Accessories & Ethnic Wear",
+      "image": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=500&q=80",
+      "displayOrder": 2,
+      "isActive": true
+    },
+    {
+      "id": "cat_home",
+      "name": "Home & Kitchen",
+      "slug": "home-kitchen",
+      "icon": "Home",
+      "description": "Cookware, Home Decor, Furniture & Appliances",
+      "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500&q=80",
+      "displayOrder": 3,
+      "isActive": true
+    },
+    {
+      "id": "cat_beauty",
+      "name": "Beauty & Personal Care",
+      "slug": "beauty",
+      "icon": "Sparkles",
+      "description": "Skincare, Haircare, Fragrances & Grooming",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=500&q=80",
+      "displayOrder": 4,
+      "isActive": true
+    },
+    {
+      "id": "cat_sports",
+      "name": "Sports & Fitness",
+      "slug": "sports",
+      "icon": "Activity",
+      "description": "Gym Equipment, Athleisure, Outdoor & Nutrition",
+      "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&q=80",
+      "displayOrder": 5,
+      "isActive": true
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_1",
+      "sellerId": "usr_seller_tech",
+      "storeName": "Nexus Gadgets & Electronics",
+      "title": "Sony WH-1000XM5 Wireless Noise Cancelling Headphones",
+      "slug": "sony-wh-1000xm5-wireless-noise-cancelling-headphones",
+      "description": "Industry-leading noise cancellation optimized with two processors and 8 microphones. Ultra-comfortable lightweight design with soft fit leather. Up to 30-hour battery life with quick charging (3 min charge for 3 hours of playback). Crystal clear hands-free calling with 4 beamforming microphones.",
+      "categoryId": "cat_electronics",
+      "categoryName": "Electronics",
+      "price": 29990,
+      "salePrice": 24990,
+      "sku": "SNY-XM5-BLK",
+      "stock": 35,
+      "images": [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=800&q=80"
+      ],
+      "status": "active",
+      "rating": 4.8,
+      "numReviews": 128,
+      "isFeatured": true,
+      "attributes": {
+        "Color": "Midnight Black",
+        "Connectivity": "Bluetooth 5.2"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "prod_2",
+      "sellerId": "usr_seller_tech",
+      "storeName": "Nexus Gadgets & Electronics",
+      "title": "Apple Watch Series 9 GPS 45mm Midnight Aluminum",
+      "slug": "apple-watch-series-9-gps-45mm",
+      "description": "S9 SiP enables a supersunny display and a magical new way to interact with your watch without touching the screen. Advanced health, safety, and activity features provide powerful insights and help when you need it.",
+      "categoryId": "cat_electronics",
+      "categoryName": "Electronics",
+      "price": 44900,
+      "salePrice": 41900,
+      "sku": "APL-W9-45M",
+      "stock": 18,
+      "images": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80"
+      ],
+      "status": "active",
+      "rating": 4.9,
+      "numReviews": 89,
+      "isFeatured": true,
+      "attributes": {
+        "Size": "45mm",
+        "Case": "Midnight Aluminum"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "prod_3",
+      "sellerId": "usr_seller_fashion",
+      "storeName": "Urban Threads Studio",
+      "title": "Handcrafted Pure Organic Linen Resort Shirt",
+      "slug": "pure-organic-linen-resort-shirt",
+      "description": "Woven from 100% sustainably cultivated French flax linen. Relaxed camp collar silhouette tailored for maximum breathability in warm climates. Pre-washed for heirloom softness from day one.",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion",
+      "price": 3499,
+      "salePrice": 2199,
+      "sku": "UBT-LNN-WHT",
+      "stock": 50,
+      "images": [
+        "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"
+      ],
+      "status": "active",
+      "rating": 4.6,
+      "numReviews": 45,
+      "isFeatured": true,
+      "attributes": {
+        "Size": "L",
+        "Material": "100% Linen"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "prod_4",
+      "sellerId": "usr_seller_fashion",
+      "storeName": "Urban Threads Studio",
+      "title": "Minimalist Raw Indigo Selvedge Denim Jacket",
+      "slug": "minimalist-raw-selvedge-denim-jacket",
+      "description": "Crafted with 14.5oz Japanese shuttle-loom selvedge denim. Features antique brass hardware, custom chain-stitched seams, and interior stash pockets.",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion",
+      "price": 5999,
+      "salePrice": 4299,
+      "sku": "UBT-SLV-JKT",
+      "stock": 22,
+      "images": [
+        "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80"
+      ],
+      "status": "active",
+      "rating": 4.7,
+      "numReviews": 31,
+      "isFeatured": false,
+      "attributes": {
+        "Fit": "Regular",
+        "Fabric": "14.5oz Selvedge"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "prod_5",
+      "sellerId": "usr_seller_tech",
+      "storeName": "Nexus Gadgets & Electronics",
+      "title": "Anker Prime 20,000mAh Power Bank (200W Output)",
+      "slug": "anker-prime-20000mah-200w-powerbank",
+      "description": "Equipped with two high-powered USB-C ports and one USB-A port totaling 200W output. Quickly charge two 14-inch laptops simultaneously at 100W each. Smart digital display delivers real-time output and remaining battery stats.",
+      "categoryId": "cat_electronics",
+      "categoryName": "Electronics",
+      "price": 11999,
+      "salePrice": 8999,
+      "sku": "ANK-PRM-20K",
+      "stock": 40,
+      "images": [
+        "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=800&q=80"
+      ],
+      "status": "active",
+      "rating": 4.9,
+      "numReviews": 76,
+      "isFeatured": true,
+      "attributes": {
+        "Capacity": "20,000mAh",
+        "MaxOutput": "200W"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    },
+    {
+      "id": "prod_6",
+      "sellerId": "usr_seller_fashion",
+      "storeName": "Urban Threads Studio",
+      "title": "Premium Italian Leather Weekend Duffle Bag",
+      "slug": "premium-italian-leather-duffle-bag",
+      "description": "Full-grain vegetable tanned Tuscan leather duffle with reinforced brass studs, YKK metal zippers, and detachable padded shoulder strap. Airport carry-on compliant.",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion",
+      "price": 9999,
+      "salePrice": 6999,
+      "sku": "UBT-LTH-BAG",
+      "stock": 14,
+      "images": [
+        "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"
+      ],
+      "status": "active",
+      "rating": 4.9,
+      "numReviews": 24,
+      "isFeatured": true,
+      "attributes": {
+        "Color": "Cognac Brown",
+        "Dimensions": "52 x 28 x 26 cm"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z",
+      "updatedAt": "2026-10-14T07:12:24.159Z"
+    }
+  ],
+  "addresses": [
+    {
+      "id": "addr_c1_default",
+      "userId": "usr_customer_1",
+      "fullName": "Rahul Sharma",
+      "phone": "+91 98765 44444",
+      "street": "Apt 4B, Silver Oak Residences, 14th Main Road",
+      "apartment": "Indiranagar 1st Stage",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postalCode": "560038",
+      "country": "India",
+      "isDefault": true,
+      "label": "home"
+    }
+  ],
+  "carts": [],
+  "wishlists": [],
+  "orders": [],
+  "subOrders": [],
+  "payments": [],
+  "sellerPayouts": [],
+  "coupons": [
+    {
+      "id": "cpn_welcome",
+      "code": "WELCOME10",
+      "discountType": "percentage",
+      "discountValue": 10,
+      "minOrderAmount": 999,
+      "maxDiscount": 500,
+      "validUntil": "2028-12-31T23:59:59.000Z",
+      "timesUsed": 14,
+      "usageLimit": 1000,
+      "isActive": true
+    },
+    {
+      "id": "cpn_flat500",
+      "code": "ZAPP500",
+      "discountType": "flat",
+      "discountValue": 500,
+      "minOrderAmount": 2999,
+      "validUntil": "2028-12-31T23:59:59.000Z",
+      "timesUsed": 8,
+      "usageLimit": 500,
+      "isActive": true
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev_1",
+      "productId": "prod_1",
+      "customerId": "usr_customer_1",
+      "customerName": "Rahul S.",
+      "rating": 5,
+      "title": "Pure audio bliss and insane battery!",
+      "comment": "The noise cancellation completely blocks out traffic and cabin noise. Highly recommend buying through Nexus store!",
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_welcome",
+      "userId": "usr_customer_1",
+      "title": "Welcome to ZappKart!",
+      "message": "Explore thousands of verified multi-vendor products. Use coupon WELCOME10 for 10% off your first order.",
+      "type": "promo",
+      "read": false,
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log_init",
+      "actorId": "system",
+      "actorEmail": "system@zappkart.com",
+      "actorRole": "system",
+      "action": "MARKETPLACE_INITIALIZED",
+      "entityType": "marketplace",
+      "entityId": "zappkart",
+      "details": {
+        "version": "1.0.0",
+        "initializedAt": "2026-10-14T07:12:24.159Z"
+      },
+      "createdAt": "2026-10-14T07:12:24.159Z"
+    }
+  ]
+}
